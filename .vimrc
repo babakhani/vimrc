@@ -14,7 +14,7 @@ set background=dark
 set encoding=UTF-8
 set guifont=DroidSansMono\ 10
 set t_Co=256
-color kuroi
+color theme
 " Install theme docs
 " https://draculatheme.com/vim/
 " color dracula
