@@ -3,10 +3,13 @@ set encoding=utf-8
 set nowrap 
 set number 
 set hlsearch 
+set noswapfile
+set nobackup
+" Fix long text past issue
+set pastetoggle=<F2>
 syntax on 
-" Install theme docs
-" cd ~/.vim/colors
-" wget https://raw.githubusercontent.com/aonemd/kuroi.vim/master/colors/kuroi.vim
+set mouse=a
+
 set background=dark
 set encoding=UTF-8
 set guifont=DroidSansMono\ 10
@@ -15,15 +18,16 @@ color kuroi
 " Install theme docs
 " https://draculatheme.com/vim/
 " color dracula
-filetype off                  
+" filetype off                  
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
+Plug 'leafoftree/vim-svelte-plugin'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'scrooloose/nerdcommenter'
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
 Plug 'godlygeek/tabular'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'itchyny/lightline.vim'
@@ -38,8 +42,8 @@ Plug 'mattn/emmet-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'vim-scripts/mako.vim'
 Plug 'yuttie/comfortable-motion.vim'
-"*Plug 'dgraham/vim-eslint'
-"*Plug 'Chiel92/vim-autoformat'
+Plug 'Chiel92/vim-autoformat'
+"Plug 'dgraham/vim-eslint'
 "*Plug 'python-mode/python-mode'
 "*Plug 'dracula/vim', { 'as': 'dracula' }
 "*Plug 'vim-scripts/indentpython.vim'
@@ -53,7 +57,7 @@ Plug 'yuttie/comfortable-motion.vim'
 call plug#end()
 set cursorline
 let $BASH_ENV = "~/.bash_aliases"
-filetype plugin indent on
+" filetype plugin indent on
 " Using system's clipboard
 set clipboard=unnamed
 " Spell checking
@@ -87,7 +91,7 @@ au BufNewFile,BufRead *.py
     \ setlocal fileformat=unix
 
 " js, css , HTML
-au BufNewFile,BufRead *.js,*.json,*.html,*.css,*.styl,*.scss,*.ts,*.cshtml,*.vue
+au BufNewFile,BufRead *.js,*.json,*.vue,*.html,*.css,*.styl,*.scss,*.ts,*.cshtml
     \ setlocal tabstop=2 |
     \ setlocal softtabstop=2 |
     \ setlocal shiftwidth=2 |
@@ -266,4 +270,9 @@ highlight ALEWarning ctermbg=DarkMagenta
 augroup FiletypeGroup
     autocmd!
     au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
+augroup END
+let g:vue_pre_processors = 'detect_on_enter'
+augroup twig_ft
+  au!
+  autocmd BufNewFile,BufRead *.vue   set filetype=vue.html
 augroup END

@@ -1,2 +1,2 @@
 # vimrc
-Fron-end development vimrc
+My vimrc
